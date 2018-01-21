@@ -1,26 +1,24 @@
-#include "class_time.h"
+#include "complex.h"
 
 
 int main()
 {
-    Time t;
+	Complex value1(5, 2);
+	Complex value2(3, -3);
 
-	std::cout << "The result after initialization (current time): \n"
-              << " Hour: " << t.get_hour() << std::endl
-              << " Minute: " << t.get_minute() << std::endl
-              << " Second: " << t.get_second() << std::endl;
+	cout << value1 << "; " << value2 << endl;
 
-    t.set_time(17, 34,25);
+	cout << value1 + value2 << endl;
 
-	std::cout << "The result of setting all the correct values: \n"
-              << " Hour: " << t.get_hour() << std::endl
-              << " Minute: " << t.get_minute() << std::endl
-              << " Second: " << t.get_second() << std::endl;
+	cout << value1 - value2 << endl;
 
-	std::cout << "The result of trying to set the wrong values : \n"
-              << " Hour: " << t.get_hour() << std::endl
-              << " Minute: " << t.get_minute() << std::endl
-              << " Second: " << t.get_second() << std::endl;
+	cout << value1 * value2 << endl;
 
-    return 0; // exit the application
+	cout << value1 / value2 << endl;
+
+	value1 = value2;
+
+	cout << value1 << " = " << value2 << endl;
+
+	return 0;
 }
