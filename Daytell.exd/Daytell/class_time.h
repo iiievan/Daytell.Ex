@@ -26,6 +26,9 @@ public:
     void print_standart();
     void print_military();
 
+    void set_actual_time();
+    bool tick();
+
 private:
 
     int hour;
