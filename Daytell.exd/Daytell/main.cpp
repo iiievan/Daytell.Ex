@@ -17,7 +17,7 @@ int main()
 
         if (t.tick())
         {
-            std::cout << "Current time: ";
+            std::cout << "Current time of timezone +3: ";
 
             t.print_standart(); 
 
