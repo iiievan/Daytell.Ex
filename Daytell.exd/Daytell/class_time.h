@@ -3,15 +3,10 @@
 #include <time.h>
 using int32 = int;
 
-#define DAY_DIV        86400
-#define HOUR_DIV        3600
-#define MINUTE_DIV        60
-
-
 class Time 
 {
 public:
-     Time();      // конструктор класса.
+     Time(int = 0, int = 0, int = 0);      // конструктор класса.
     //~Time();      // деструктор класса.
 
     void set_time(int,int,int);
@@ -19,19 +14,17 @@ public:
     void set_minute(int);
     void set_second(int);
 
-    int get_hour();
-    int get_minute();
-    int get_second();
+    // функции чтени€ get ( обычно объ€вл€ютс€ как const)
+    int get_hour() const;
+    int get_minute() const;
+    int get_second() const;
 
-    void print_standart();
-    void print_military();
-
-    void set_actual_time();
-    bool tick();
+    void print_standart() const;
+    void print_military() const;
 
 private:
 
-    int hour;
-    int minute; 
-    int second;       
+    int hour;       // 0 - 23
+    int minute;     // 0 - 59
+    int second;     // 0 - 59  
 };

@@ -3,27 +3,11 @@
 
 int main()
 {
-	Time t;
-    bool time_renew = false;
+	const Time t(19, 33, 52);   // константный объект
 
-    std::cout << "The result after initialization (current time): \n"
-		      << "  Hour: " << t.get_hour() << std::endl
-		      << "Minute: " << t.get_minute() << std::endl
-		      << "Second: " << t.get_second() << std::endl;
-		      
-    while (true)
-    {
-        t.set_actual_time();        
-
-        if (t.tick())
-        {
-            std::cout << "Current time of timezone +3: ";
-
-            t.print_standart(); 
-
-            std::cout << "\n";
-        }
-    }
+    t.set_hour(20);
+    t.set_minute(12);
+    t.set_second(39);    
 
 	return 0; // exit the application
 }
