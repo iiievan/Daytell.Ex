@@ -1,20 +1,33 @@
-#include "main.h"
-#include "emply_1.h"
+#include <iostream>
+#include <string> 
 
 using namespace std;
+
+class Test
+{
+public:
+    Test(int = 0);
+    void print() const;
+private:
+    int x;
+};
+
+Test::Test(int a) { x = a; }    // конструктор
+
+void Test::print() const
+{
+    cout << "         x = " << x << endl
+         << "   this->x = " << this->x << endl
+         << " (*this).x = " << (*this).x << endl;
+}
 
 int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    Employee e("Боб", "Джон", 7, 24, 49, 3, 12, 88);
-    cout << endl;
+    Test a(12);
 
-    e.print();
-    cout << endl << "Проверка конструктора Date "
-         << " c неверными значениями: " << endl;
-    Date d(14, 35, 94);     // неверные значения Date
-
+    a.print();
     
 	return 0; // exit the application
 }
