@@ -1,29 +1,20 @@
-#include "class_time.h"
+#include "main.h"
+#include "emply_1.h"
 
+using namespace std;
 
 int main()
 {
-	Time t;
-    bool time_renew = false;
+    setlocale(LC_ALL, "Russian");
 
-    std::cout << "The result after initialization (current time): \n"
-		      << "  Hour: " << t.get_hour() << std::endl
-		      << "Minute: " << t.get_minute() << std::endl
-		      << "Second: " << t.get_second() << std::endl;
-		      
-    while (true)
-    {
-        t.set_actual_time();        
+    Employee e("Боб", "Джон", 7, 24, 49, 3, 12, 88);
+    cout << endl;
 
-        if (t.tick())
-        {
-            std::cout << "Current time of timezone +3: ";
+    e.print();
+    cout << endl << "Проверка конструктора Date "
+         << " c неверными значениями: " << endl;
+    Date d(14, 35, 94);     // неверные значения Date
 
-            t.print_standart(); 
-
-            std::cout << "\n";
-        }
-    }
-
+    
 	return 0; // exit the application
 }
