@@ -1,20 +1,34 @@
-#include "main.h"
-#include "emply_1.h"
+#include <iostream>
+#include <string> 
 
 using namespace std;
+
+class Count
+{
+    //friend void setX(Count &, int);
+public:
+    Count() {  x = 0; }
+    void print() const { std::cout << x << std::endl; }
+private:
+    int x;
+};
+
+void setX(Count &c, int val)
+{
+    c.x = val;      // разрешено: setX - друг Count
+}
 
 int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    Employee e("Боб", "Джон", 7, 24, 49, 3, 12, 88);
-    cout << endl;
+    Count object;
 
-    e.print();
-    cout << endl << "Проверка конструктора Date "
-         << " c неверными значениями: " << endl;
-    Date d(14, 35, 94);     // неверные значения Date
-
+    cout << "object.x после своего создания: ";
+    object.print();
+    cout << "object.x после вызова дружественной функции setX: ";
+    setX(object, 8);
+    object.print();
     
 	return 0; // exit the application
 }
