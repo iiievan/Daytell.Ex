@@ -1,48 +1,20 @@
-//#include "class_time.h"
-#include <iostream>
-#include <string> 
+#include "main.h"
+#include "emply_1.h"
 
 using namespace std;
-
-class Increment
-{
-public:
-    Increment(int c = 0, int i = 1);
-    void addIncrement() { count += increment; }
-    void print() const;
-
-private:
-    int count;
-    const int increment;    // константный элемент данных
-};
-
-// Конструктор класса Increment
-Increment::Increment(int c, int i)
-    : increment(i)
-{ count = c;}
-
-void Increment::print() const
-{
-    cout << "count = " << count
-         << ", increment = " << increment << endl;
-}
 
 int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    Increment value(10, 5);
+    Employee e("Боб", "Джон", 7, 24, 49, 3, 12, 88);
+    cout << endl;
 
-    cout << "Перед приращением: ";
+    e.print();
+    cout << endl << "Проверка конструктора Date "
+         << " c неверными значениями: " << endl;
+    Date d(14, 35, 94);     // неверные значения Date
 
-    value.print();
-
-    for (int j = 1; j <= 3; j++)
-    {
-        value.addIncrement();
-        cout << "После приращения " << j << ": ";
-        value.print();
-    }
-
+    
 	return 0; // exit the application
 }
