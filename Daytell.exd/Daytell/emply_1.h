@@ -1,20 +1,22 @@
 #ifndef EMPLY_1_H
 #define EMPLY_1_H
 
-#include "date_1.h"
-#include <iostream>
-#include <string> 
-
 class Employee 
 {
 public:
-    Employee(char *, char *, int, int, int, int, int, int);
-    void print() const;
+    Employee(const char *, const char *);   // конструктор
+    ~Employee();                // деструктор
+
+    const char *getFirstName() const;   // возвращает имя
+    const char *getLastName() const;    // возвращает фамилию
+
+    static int getCount();  // возвращает число созданных объектов
 private:
-    char lastName[25];
-    char firstName[25];
-    Date birthDate;
-    Date hireDate;
+    char *lastName;
+    char *firstName;
+
+    // подсчет количества созданных объектов
+    static int o_count;   
 };
 
 #endif

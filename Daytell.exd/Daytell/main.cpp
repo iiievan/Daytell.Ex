@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string> 
-#include "class_time.h"
+#include "emply_1.h"
 
 using namespace std;
 
@@ -8,18 +8,25 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    Time t;
+    cout << "Количество служащих перед созданием объектов равно "
+         << Employee::getCount() << endl;
 
-    t.set_hour(18).set_minute(40).set_second(4);
+    Employee *e1Ptr = new Employee("Susan", "Baker");
+    Employee *e2Ptr = new Employee("Robert", "Jones");
 
-    cout << " Military time: " ;
-    t.print_military();
-    cout << endl << " Standart time: ";
-    t.print_standart();
+    cout << endl << "Служащий 1: "
+         << e1Ptr->getFirstName()
+         << "  "  << e1Ptr->getLastName()
+         << endl << "Служащий 2: "
+         << e2Ptr->getFirstName()
+         << "  "  << e2Ptr->getLastName()
+         << endl << endl;
 
-    cout << endl << endl << " New standart time: ";
-    t.set_time(20, 20, 20).print_standart();
-    cout << endl;
+    delete e1Ptr;   // освобождение памяти
+    delete e2Ptr;   // освобождение памяти
+
+    cout << "Количество служащих после удаления равно: "
+         << Employee::getCount() << endl;
     
 	return 0; // exit the application
 }
