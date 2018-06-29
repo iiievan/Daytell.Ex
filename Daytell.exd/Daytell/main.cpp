@@ -3,32 +3,31 @@
 
 using namespace std;
 
-class Count
+class Test
 {
-    //friend void setX(Count &, int);
 public:
-    Count() {  x = 0; }
-    void print() const { std::cout << x << std::endl; }
+    Test(int = 0);
+    void print() const;
 private:
     int x;
 };
 
-void setX(Count &c, int val)
+Test::Test(int a) { x = a; }    // конструктор
+
+void Test::print() const
 {
-    c.x = val;      // разрешено: setX - друг Count
+    cout << "         x = " << x << endl
+         << "   this->x = " << this->x << endl
+         << " (*this).x = " << (*this).x << endl;
 }
 
 int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    Count object;
+    Test a(12);
 
-    cout << "object.x после своего создания: ";
-    object.print();
-    cout << "object.x после вызова дружественной функции setX: ";
-    setX(object, 8);
-    object.print();
+    a.print();
     
 	return 0; // exit the application
 }
