@@ -9,29 +9,37 @@
 // конструктор присваивает текущее время элементам класса.
 Time::Time(int hr, int min, int sec) { set_time(hr, min, sec); }
 
-void Time::set_time(int h,int m,int s)
+Time &Time::set_time(int h,int m,int s)
 {
     hour   = (h >= 0 && h < 24) ? h : 0;
     minute = (m >= 0 && m < 60) ? m : 0;
     second = (s >= 0 && s < 60) ? s : 0;
+
+    return *this;       // возможность сцепления
 }
 
-void Time::set_hour(int h)
+Time &Time::set_hour(int h)
 {
     hour   = (h >= 0 && h < 24) ? h : 0;
+
+    return *this;       // возможность сцепления
 }
 
-void Time::set_minute(int m)
+Time &Time::set_minute(int m)
 {
     minute = (m >= 0 && m < 60) ? m : 0;
+
+    return *this;       // возможность сцепления
 }
 
-void Time::set_second(int s)
+Time &Time::set_second(int s)
 {
     second = (s >= 0 && s < 60) ? s : 0;
+
+    return *this;       // возможность сцепления
 }
 
-int Time::get_hour() const { return hour; }
+int Time::get_hour()   const { return hour; }
 int Time::get_minute() const { return minute; }
 int Time::get_second() const { return second; }
 

@@ -9,10 +9,11 @@ public:
      Time(int = 0, int = 0, int = 0);      // конструктор класса.
     //~Time();      // деструктор класса.
 
-    void set_time(int,int,int);
-    void set_hour(int);
-    void set_minute(int);
-    void set_second(int);
+    Time &set_time(int,int,int);
+
+    Time &set_hour(int);
+    Time &set_minute(int);
+    Time &set_second(int);
 
     // функции чтени€ get ( обычно объ€вл€ютс€ как const)
     int get_hour() const;
