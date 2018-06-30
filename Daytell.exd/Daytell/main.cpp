@@ -22,6 +22,9 @@ int main()
          << "  "  << e2Ptr->getLastName()
          << endl << endl;
 
+	cout << "количество объектов в e1Ptr = " << (*e1Ptr).getCount() << endl;
+	cout << "количество объектов в e2Ptr = " << (*e2Ptr).getCount() << endl << endl;
+
     delete e1Ptr;   // освобождение памяти
     delete e2Ptr;   // освобождение памяти
 
