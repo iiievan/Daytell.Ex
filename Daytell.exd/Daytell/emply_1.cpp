@@ -1,32 +1,49 @@
 #include "emply_1.h"
+#include <iostream>
+#include <string> 
+#include <assert.h>
+
 using namespace std;
 
-Employee::Employee (char *fname, char *lname,
-                    int bmonth, int bday, int byear,
-                    int hmonth, int hday, int hyear)
-            : birthDate (bmonth, bday, byear), hireDate(hmonth, hday, hyear)
+// задание начального значения элемента данных
+int Employee::o_count = 0;
+
+int Employee::getCount() { return o_count; }
+
+Employee::Employee (const char *first, const char *last)
 {
-    // копирование fname в firstName и проверка их совпадения
-    int lenght = strlen(fname);
-    lenght = lenght < 25 ? lenght : 24;
-    strncpy(firstName, fname, lenght);
-    firstName[lenght] = '\0';
+    firstName = new char[strlen(first) + 1 ];
+    assert(firstName != 0);     // проверка выделения памяти
+    strcpy(firstName, first);
 
-    // копирование lname в lastName и проверка их совпадения
-    lenght = strlen(lname);
-    lenght = lenght < 25 ? lenght : 24; 
-    strncpy(lastName, lname, 24);
-    lastName[lenght] = '\0';
+    lastName = new char[strlen(last) + 1 ];
+    assert(lastName != 0);  // проверка выделения памяти
+    strcpy(lastName, last);
 
-    cout << "Конструктор объекта Employee: "
-         << firstName << ' ' << lastName << endl;
+    o_count++;    // увеличиваем количество объектов на 1.
+
+    cout << "Конструктор Employee для   " << firstName
+         << "  " << lastName << " вызыван." << endl;
 }
 
-void Employee :: print() const
+// Деструктор освобождает динамически выделенную память.
+Employee ::~Employee()
 {
-    cout << lastName << ", " << firstName << endl << "Нанят: ";
-    hireDate.print();
-    cout << " День рождения: ";
-    birthDate.print();
-    cout << endl;
+    cout << "~Employee() вызван для " << firstName
+         << "  "  << lastName << endl;
+
+    delete[] firstName;    // освобождение памяти
+    delete[] lastName;     // освобождение памяти
+
+    --o_count;    // уменьшаем количество объектов на 1.
+}
+
+// Возвращаем имя служащего
+const char *Employee::getFirstName() const
+{ return firstName; }
+
+// и его фамилию
+const char *Employee::getLastName() const
+{
+    return lastName;
 }
