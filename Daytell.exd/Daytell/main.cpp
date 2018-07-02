@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string> 
-#include "emply_1.h"
 
 using namespace std;
 
@@ -8,28 +7,45 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    cout << " оличество служащих перед созданием объектов равно "
-         << Employee::getCount() << endl;
+	int mass[] = { 0, 1, 7, 11, 4, 8, 4, 11, 8, 8, 6 };
 
-    Employee *e1Ptr = new Employee("Susan", "Baker");
-    Employee *e2Ptr = new Employee("Robert", "Jones");
+	static int maximum = 0;
+	const int mass_size = sizeof(mass) / sizeof(*mass);	// вычисл€ем размер массива.
 
-    cout << endl << "—лужащий 1: "
-         << e1Ptr->getFirstName()
-         << "  "  << e1Ptr->getLastName()
-         << endl << "—лужащий 2: "
-         << e2Ptr->getFirstName()
-         << "  "  << e2Ptr->getLastName()
-         << endl << endl;
+	// находим наибольшее число в массиве.
+	for (int j = 0; j <= mass_size; j++)
+	{
+		if (mass[j] > maximum)
+		{
+			maximum = mass[j];
+		}
+	}
 
-	cout << "количество объектов в e1Ptr = " << (*e1Ptr).getCount() << endl;
-	cout << "количество объектов в e2Ptr = " << (*e2Ptr).getCount() << endl << endl;
+	maximum++;	// это наш показатель, что число уже сравнивалось, берем максимальное, которого нет в массиве.
 
-    delete e1Ptr;   // освобождение пам€ти
-    delete e2Ptr;   // освобождение пам€ти
+	for (int counter = 0; counter < mass_size; counter++)
+	{
+		// пропускаем ход если число уже сравнивалось.
+		if (mass[counter] == maximum)
+		{			
+			continue;
+		}
 
-    cout << " оличество служащих после удалени€ равно: "
-         << Employee::getCount() << endl;
-    
+		// последний символ не сравниваем
+		for (int i = counter + 1; i <= mass_size; i++)
+		{
+			if (mass[i] == mass[counter] && 
+				mass[i] != maximum)
+			{
+				mass[i] = maximum;
+			}
+		}
+
+		if (mass[counter] != maximum)
+		{
+			cout << " уникальный номер в массиве " << " = " << mass[counter] << endl;
+		}
+	}
+
 	return 0; // exit the application
 }

@@ -12,11 +12,11 @@ int Employee::getCount() { return o_count; }
 
 Employee::Employee (const char *first, const char *last)
 {
-    firstName = new char[strlen(first) + 1];
+    firstName = new char[strlen(first) + 1 ];
     assert(firstName != 0);     // проверка выделения памяти
     strcpy(firstName, first);
 
-    lastName = new char[strlen(last) + 1];
+    lastName = new char[strlen(last) + 1 ];
     assert(lastName != 0);  // проверка выделения памяти
     strcpy(lastName, last);
 
