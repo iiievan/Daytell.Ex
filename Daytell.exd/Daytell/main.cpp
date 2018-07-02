@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string> 
+#include "date_1.h"
 
 using namespace std;
 
@@ -7,45 +8,19 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-	int mass[] = { 0, 1, 7, 11, 4, 8, 4, 11, 8, 8, 6 };
+	Date d(02, 07, 2018);
 
-	static int maximum = 0;
-	const int mass_size = sizeof(mass) / sizeof(*mass);	// вычисляем размер массива.
+	cout << "Дата в формате DDMMYY: ";
+	d.print_ddmmyy();
+	cout  << endl;
 
-	// находим наибольшее число в массиве.
-	for (int j = 0; j <= mass_size; j++)
-	{
-		if (mass[j] > maximum)
-		{
-			maximum = mass[j];
-		}
-	}
+	cout << "Дата в формате DDYYYY: ";
+	d.print_ddyyyy();
+	cout << endl;
 
-	maximum++;	// это наш показатель, что число уже сравнивалось, берем максимальное, которого нет в массиве.
-
-	for (int counter = 0; counter < mass_size; counter++)
-	{
-		// пропускаем ход если число уже сравнивалось.
-		if (mass[counter] == maximum)
-		{			
-			continue;
-		}
-
-		// последний символ не сравниваем
-		for (int i = counter + 1; i <= mass_size; i++)
-		{
-			if (mass[i] == mass[counter] && 
-				mass[i] != maximum)
-			{
-				mass[i] = maximum;
-			}
-		}
-
-		if (mass[counter] != maximum)
-		{
-			cout << " уникальный номер в массиве " << " = " << mass[counter] << endl;
-		}
-	}
+	cout << "Дата в формате - месяц DD, YYYY: ";
+	d.print_alpha();
+	cout << endl;
 
 	return 0; // exit the application
 }
