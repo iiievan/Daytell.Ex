@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string> 
-#include "class_time.h"
+#include "t_stack.h"
 
 using namespace std;
 
@@ -8,18 +8,48 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    Time t;
+	Stack<float> floatStack(5);
+	static float f = 1.1;
+	cout << "Размещение элементов в floatStack" << endl;
 
-    t.set_hour(18).set_minute(40).set_second(4);
-
-    cout << " Military time: " ;
-    t.print_military();
-    cout << endl << " Standart time: ";
-    t.print_standart();
-
-    cout << endl << endl << " New standart time: ";
-    t.set_time(20, 20, 20).print_standart();
-    cout << endl;
+	while (floatStack.push(f))
+	{
+		cout << "  ";
+		f += 1.1;
+	}
     
+	cout << endl << "Стек заполнен. Невозможно разместить еще хоть один элемент."
+		 << endl
+		 << "Выталкивание элементов из floatStack" << endl;
+
+	while (floatStack.pop(f))
+	{
+		cout << "  ";
+
+	}
+
+	cout << endl << "Стек пуст. Вот и все." << endl;
+
+	Stack<int> intStack;
+	static int i = 1;
+	cout << "Размещение элементов в intStack" << endl;
+
+	while (intStack.push(i))
+	{
+		cout << "  ";
+		i += 1;
+	}
+
+	cout << endl << "Стек заполнен. Невозможно разместить еще хоть один элемент."
+		<<  endl
+		<< "Выталкивание элементов из intStack" << endl;
+
+	while (intStack.pop(i))
+	{
+		cout << "  ";
+
+	}
+
+	cout << endl << "Стек пуст. Вот и все." << endl;
 	return 0; // exit the application
 }
