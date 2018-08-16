@@ -18,12 +18,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="class_time.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="class_time.h">
+    <ClInclude Include="t_stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
