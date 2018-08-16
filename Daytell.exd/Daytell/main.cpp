@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector> 
+#include <iterator> 
 
 using namespace std;
 
@@ -28,6 +29,20 @@ int main()
 	}
 	cout << endl;
 
+	// сравниваем векторы
+	if (myVector_1 == myVector_2)
+		cout << endl << " ¬ектор1 == ¬ектору2" << endl;
+
+	myVector_1.insert(myVector_1.end(), 10);
+	myVector_1.insert(myVector_1.end(), 11);
+	myVector_1.insert(myVector_1.end(), 12);
+
+	// вывод на экран элементов вектора
+	copy(myVector_1.begin(),	//начало массива в векторе
+		myVector_1.end(),		// конец массива в векторе
+		ostream_iterator<int>(cout, "  "));	// итератор потока вывода
+
+	cout << endl;
 
 	return 0; // exit the application
 }
