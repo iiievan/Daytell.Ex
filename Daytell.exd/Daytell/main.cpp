@@ -8,41 +8,29 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    vector<int> myVector_1(10);	//так объявляется вектор в 10 элементов и сразу же инициализируется нуляме
+	vector <int> vecInt(3, 100); ///Создаем вектор из 3 элементов и заполняем его значением 100
+	vector <int>::iterator it;
+	it = vecInt.begin(); ///Итератор указывает на vec[0]
 
-	//vector<int> myVector;	//так объявляется вектор в 10 элементов, но он не иницилизируется ничем. На печать ничего не выведется.
-	//myVector.reserve(10);	// Но зато так быстрее его задать.
-	
-	cout << "Исходный  массив: ";
-	for (int i = 0; i < myVector_1.size(); i++)
+						 ///Вектор расширяется теперь до 4 элементов
+	vecInt.insert(it, 200); ///И первым элементом записывается 200
+
+							///Вектор расширяется теперь до 5 элементов
+	it = vecInt.begin() + 3;///Вектор указывает на 4 элемент (0-элемент+3-элемента)
+	vecInt.insert(it , 300);///И четвертым элементом записывается 300
+	it = vecInt.begin() + 4;/// почемуто без этого не работает нормально.
+	vecInt.insert(it + 1 , 900);///Вектор расширяется теперь до 6 элементов и 5 элементом записывается 900
+
+	cout << "Vector contains: ";
+	for (int i = 0; i < vecInt.size(); ++i)
 	{
-		myVector_1[i] = i;
-		cout << myVector_1[i] << "  " ;
+		cout << vecInt[i] << ends;
 	}
 
-	cout << endl << "Cкопированный массив: ";
-	vector<int> myVector_2(myVector_1);	// при объявлении первого вектора копируется второй вектор.
-
-	for (int i = 0; i < myVector_2.size(); i++)
-	{
-		cout << myVector_2[i] << "  ";
-	}
-	cout << endl;
-
-	// сравниваем векторы
-	if (myVector_1 == myVector_2)
-		cout << endl << " Вектор1 == Вектору2" << endl;
-
-	myVector_1.insert(myVector_1.end(), 10);
-	myVector_1.insert(myVector_1.end(), 11);
-	myVector_1.insert(myVector_1.end(), 12);
-
-	// вывод на экран элементов вектора
-	copy(myVector_1.begin(),	//начало массива в векторе
-		myVector_1.end(),		// конец массива в векторе
-		ostream_iterator<int>(cout, "  "));	// итератор потока вывода
-
-	cout << endl;
+	cout << "\nVector max_size: " << vecInt.max_size();
+	cout << "\nVector size: " << vecInt.size(); ///Выводим размер вектора
+	vecInt.resize(10); ///Увеличиваем размер до 10 элементов
+	cout << "\nNew vector size: " << vecInt.size() << endl; ///Выводим размер вектора
 
 	return 0; // exit the application
 }
