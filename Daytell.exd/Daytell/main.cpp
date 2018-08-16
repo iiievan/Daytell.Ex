@@ -1,6 +1,5 @@
 #include <iostream>
-#include <string> 
-#include "t_stack.h"
+#include <vector> 
 
 using namespace std;
 
@@ -8,48 +7,27 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-	Stack<float> floatStack(5);
-	static float f = 1.1;
-	cout << "Размещение элементов в floatStack" << endl;
+    vector<int> myVector_1(10);	//так объявляется вектор в 10 элементов и сразу же инициализируется нуляме
 
-	while (floatStack.push(f))
+	//vector<int> myVector;	//так объявляется вектор в 10 элементов, но он не иницилизируется ничем. На печать ничего не выведется.
+	//myVector.reserve(10);	// Но зато так быстрее его задать.
+	
+	cout << "Исходный  массив: ";
+	for (int i = 0; i < myVector_1.size(); i++)
 	{
-		cout << "  ";
-		f += 1.1;
-	}
-    
-	cout << endl << "Стек заполнен. Невозможно разместить еще хоть один элемент."
-		 << endl
-		 << "Выталкивание элементов из floatStack" << endl;
-
-	while (floatStack.pop(f))
-	{
-		cout << "  ";
-
+		myVector_1[i] = i;
+		cout << myVector_1[i] << "  " ;
 	}
 
-	cout << endl << "Стек пуст. Вот и все." << endl;
+	cout << endl << "Cкопированный массив: ";
+	vector<int> myVector_2(myVector_1);	// при объявлении первого вектора копируется второй вектор.
 
-	Stack<int> intStack;
-	static int i = 1;
-	cout << "Размещение элементов в intStack" << endl;
-
-	while (intStack.push(i))
+	for (int i = 0; i < myVector_2.size(); i++)
 	{
-		cout << "  ";
-		i += 1;
+		cout << myVector_2[i] << "  ";
 	}
+	cout << endl;
 
-	cout << endl << "Стек заполнен. Невозможно разместить еще хоть один элемент."
-		<<  endl
-		<< "Выталкивание элементов из intStack" << endl;
 
-	while (intStack.pop(i))
-	{
-		cout << "  ";
-
-	}
-
-	cout << endl << "Стек пуст. Вот и все." << endl;
 	return 0; // exit the application
 }
